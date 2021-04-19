@@ -21,12 +21,14 @@ int GetInt(void);
 void StringInputMenu(void);
 
 string KeyboardInput::Read() {
-	cout << "¬ведите предложение (чтобы остановить ввод введите 'Q'): ";
+	cout << "¬ведите предложение (чтобы остановить ввод введите 'Q')" << endl;
 	string input_string;
 	string line = "";
+	int i = 1;
 
 	do {
 		line = "";
+		cout << i++ << ")";
 		getline(cin, line);
 		
 		if (line != "Q") {

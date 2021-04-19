@@ -14,11 +14,15 @@ void CodingOrDecodingMenu(void);
 
 string CodingString(string input_string, int number_of_characters) {
 	int last_change_position = 0;
-	
+
 	for (int i = 0; i < (input_string.length() - 1); i++) {
 		int first_repeated_character = i;
 
-		while ( ((i != (input_string.length() - 1)) && (input_string[i] == input_string[i + 1])) || (input_string[i] == '\n') ) {
+		if (input_string[i] == '\n') {
+			continue;
+		}
+
+		while ( (i != (input_string.length() - 1)) && (input_string[i] == input_string[i + 1]) ) {
 			i++;
 		}
 
@@ -36,7 +40,7 @@ string CodingString(string input_string, int number_of_characters) {
 
 	}
 
-	if ( (number_of_characters == 1) && (last_change_position == (input_string.length() - 2)) ) {
+	if ( (number_of_characters == 1) && (last_change_position == (input_string.length() - 1)) ) {
 		string new_string = "{";
 		new_string += input_string[last_change_position + 1];
 		new_string += ",1}";
