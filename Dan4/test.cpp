@@ -120,7 +120,7 @@ void Test(void) {
 	}
 
 	if (value_test_passed == ALL_TEST_PASSED) {
-		cout << endl << "All test passed" << endl;
+		cout << endl << "Все тесты пройдены" << endl;
 	}
 
 }
