@@ -46,7 +46,7 @@ void SaveChangeString(string transforming_string) {
 
 		cin >> choice;
 
-		if (choice.compare("n") && choice.compare("y")) {
+		if (choice.compare("2") && choice.compare("1")) {
 			cout << "Такого выбора нет." << endl
 				<< "Хотите сохранить в файл преобразованную строку?" << endl;
 		}

@@ -103,9 +103,10 @@ void Test(void) {
 		value_test_passed++;
 	}
 
-	input_string = "sorting laboratory is veeeeeeeeeeeeeeeeeery bad";
+	input_string = "sorting laboratory is veeeeeeeeeeeeeeeeeery bad\n";
 	number_of_characters = 1;
-	expected_string = "{s,1}{o,1}{r,1}{t,1}{i,1}{n,1}{g,1}{ ,1}{l,1}{a,1}{b,1}{o,1}{r,1}{a,1}{t,1}{o,1}{r,1}{y,1}{ ,1}{i,1}{s,1}{ ,1}{v,1}{e,18}{r,1}{y,1}{ ,1}{b,1}{a,1}{d,1}";
+	expected_string = "{s,1}{o,1}{r,1}{t,1}{i,1}{n,1}{g,1}{ ,1}{l,1}{a,1}{b,1}{o,1}{r,1}{a,1}{t,1}{o,1}{r,1}{y,1}{ ,1}{i,1}{s,1}{ ,1}{v,1}{e,18}{r,1}{y,1}{ ,1}{b,1}{a,1}{d,1}\n";
+
 
 	if (TestingCoding(input_string, expected_string, number_of_characters, value_test_passed) == true) {
 		value_test_passed++;

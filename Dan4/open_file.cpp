@@ -18,7 +18,7 @@ ofstream OpenFileOutput(void) {
 
 	do {
 		cout << "¬ведите путь к файлу" << endl;
-		cin >> path;
+		getline(cin, path);
 
 		if (ifstream(path)) {
 
@@ -79,7 +79,7 @@ ifstream OpenFileInput(void) {
 	do {
 
 		do {
-			cin >> path;
+			getline(cin, path);
 
 			if (!filesystem::is_regular_file(path, ec)) {
 				cout << "Ётот файл не может быть открыт." << endl
