@@ -51,7 +51,8 @@ string CodingString(string input_string, int number_of_characters) {
 }
 
 string DecodingString(string input_string) {
-	
+	const int ASCII_OFFSET = 48;
+
 	for (int i = 0; i < (input_string.length() - 3); i++) {
 
 		if ((input_string[i] == '{') && (input_string[i + 2] == ',') && (isdigit(input_string[i + 3]))) {
@@ -60,7 +61,7 @@ string DecodingString(string input_string) {
 			char letter = input_string[i + 1];
 
 			while (isdigit(input_string[i + 3])) {
-				number_of_characters = number_of_characters * 10 + static_cast<int>(input_string[i + 3]) - 48;
+				number_of_characters = number_of_characters * 10 + static_cast<int>(input_string[i + 3]) - ASCII_OFFSET;
 				i++;
 			}
 
