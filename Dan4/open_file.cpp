@@ -18,6 +18,7 @@ ofstream OpenFileOutput(void) {
 
 	do {
 		cout << "¬ведите путь к файлу" << endl;
+		cin.ignore();
 		getline(cin, path);
 
 		if (ifstream(path)) {

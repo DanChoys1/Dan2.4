@@ -34,7 +34,7 @@ string CodingString(string input_string, int number_of_characters) {
 			new_string += "}";
 
 			input_string.replace(first_repeated_character, ((i + 1) - first_repeated_character), new_string);
-			i = (first_repeated_character - 1) + new_string.length();
+			i = (first_repeated_character - 1) + static_cast<int>(new_string.length());
 			last_change_position = i;
 		}
 
@@ -101,5 +101,6 @@ int CodingOrDecodingChoice() {
 
 	} while ( (choice != CODING_CHOICE) && (choice != DECODING_CHOICE) );
 
+	//throw exception
 	exit(0);
 }

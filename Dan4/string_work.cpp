@@ -3,22 +3,21 @@
 #include "input.h"
 #include "save_data.h"
 #include "encode_string.h"
+
 using namespace std;
 
-unique_ptr<Input> ChoiceInputType(bool *user_selected_file_input);
+unique_ptr<Input> ChoiceInputType(void);
 int GetInt(void);
 
 void StringInterface(void) {
-	bool user_selected_file_input = false;
-
-	unique_ptr<Input> inp = ChoiceInputType(&user_selected_file_input);
+	unique_ptr<Input> inp = ChoiceInputType();
 
 	string input_string = inp->Read();
 
 	string transforming_string = "";
 
 	if (CodingOrDecodingChoice() == CODING_CHOICE) {
-		cout << "При каком минимальном кол-ве повторяющихся символов вы хотите заменять их на {буква, кол-во}?" << endl;
+		cout << "При каком минимальном кол-ве повторяющихся символов вы хотите заменять их на {буква,кол-во}?" << endl;
 		int number_of_characters = 0;
 
 		do {
@@ -41,7 +40,7 @@ void StringInterface(void) {
 	cout << "Преобразованное предложение" << endl;
 	cout << transforming_string;
 
-	if (user_selected_file_input != true) {
+	if (!inp->IsFileInput()) {
 		SaveInputString(input_string);
 	}
 

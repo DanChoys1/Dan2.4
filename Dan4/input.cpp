@@ -20,6 +20,19 @@ enum Opening {
 int GetInt(void);
 void StringInputMenu(void);
 
+bool EnglishSymbols (string line) {
+
+	for (int i = 0; i < line.length(); i++) {
+		
+		if ((static_cast<int>(line[i]) < 32) || (static_cast<int>(line[i]) > 127)) {
+			return false;
+		}
+
+	}
+
+	return true;
+ }
+
 string KeyboardInput::Read() {
 	cout << "¬ведите предложение (чтобы остановить ввод введите 'Q')" << endl;
 	string input_string;
@@ -31,6 +44,14 @@ string KeyboardInput::Read() {
 		cout << i++ << ")";
 		getline(cin, line);
 		
+		if (!EnglishSymbols(line)) {
+			cout << endl << "—имволы, используемые в строке, не поддерживаютс€" << endl
+				<< "¬ведите другую строку:" << endl;
+
+			i--;
+			continue;
+		}
+
 		if (line != "Q") {
 			input_string = input_string + line + '\n';
 		}
@@ -38,6 +59,10 @@ string KeyboardInput::Read() {
 	} while (line != "Q");
 
 	return input_string;
+}
+
+bool KeyboardInput::IsFileInput(void) {
+	return false;
 }
 
 string FileInput::Read() {
@@ -61,6 +86,12 @@ string FileInput::Read() {
 			continue;
 		}
 
+		if (!EnglishSymbols(line)) {
+			cout << endl << "—имволы, используемые в файле, не поддерживаютс€" << endl;
+
+			continue;
+		}
+
 		correctness_string = COMPLITE;
 
 		cout << endl << "¬ведЄнное предложение:" << endl
@@ -72,7 +103,11 @@ string FileInput::Read() {
 	return input_string;
 }
 
-unique_ptr<Input> ChoiceInputType(bool *user_selected_file_input) {
+bool FileInput::IsFileInput(void) {
+	return true;
+}
+
+unique_ptr<Input> ChoiceInputType(void) {
 	int choice = 0;
 
 	do {
@@ -85,7 +120,6 @@ unique_ptr<Input> ChoiceInputType(bool *user_selected_file_input) {
 
 		} else if (choice == CHOICE_FILE) {
 
-			*user_selected_file_input = true;
 			return unique_ptr<FileInput>(new FileInput);
 
 		} else {
@@ -96,5 +130,6 @@ unique_ptr<Input> ChoiceInputType(bool *user_selected_file_input) {
 
 	} while ((choice != CHOICE_KEYBOARD) && (choice != CHOICE_FILE));
 
-	exit(0);
+	string inv_arg = "Went out of the loop";
+	throw inv_arg;
 }
