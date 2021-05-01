@@ -101,6 +101,6 @@ int CodingOrDecodingChoice() {
 
 	} while ( (choice != CODING_CHOICE) && (choice != DECODING_CHOICE) );
 
-	//throw exception
-	exit(0);
+	string inv_arg = "Went out of the loop";
+	throw inv_arg;
 }
