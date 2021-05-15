@@ -11,7 +11,6 @@ int GetInt(void);
 
 void StringInterface(void) {
 	unique_ptr<Input> inp = ChoiceInputType();
-
 	string input_string = inp->Read();
 
 	string transforming_string = "";

@@ -28,6 +28,7 @@ void SaveInputString(string input_string) {
 		ofstream file;
 		file = OpenFileOutput();
 
+		input_string.erase(input_string.length() - 1, 1);
 		file << input_string << endl;
 
 		file.close();
@@ -56,6 +57,8 @@ void SaveChangeString(string transforming_string) {
 	if (choice.compare("2")) {
 		ofstream file;
 		file = OpenFileOutput();
+
+		transforming_string.erase(transforming_string.length() - 1, 1);
 
 		file << transforming_string << endl;
 

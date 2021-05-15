@@ -78,8 +78,10 @@ string FileInput::Read() {
 
 		while (!file.eof()) {
 			getline(file, line);
-			input_string += line;
+			input_string += line + "\n";
 		}
+
+		input_string.erase(input_string.length() - 1, 1);
 
 		if (!input_string.length()) {
 			cout << "Файл ничего не содержит. Попробуйте еще раз." << endl;
@@ -94,8 +96,7 @@ string FileInput::Read() {
 
 		correctness_string = COMPLITE;
 
-		cout << endl << "Введённое предложение:" << endl
-			<< input_string << endl;
+		cout << endl << "Введённое предложение:" << endl << input_string;
 
 		file.close();
 	} while (correctness_string == FAILED);
